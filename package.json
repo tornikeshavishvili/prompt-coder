@@ -1,0 +1,127 @@
+{
+  "name": "prompt-coder-final",
+  "displayName": "Prompt Coder",
+  "description": "Generate/replace raw code from @ai directives inside comments. Keeps markers. Strips fences/backticks. Run/Stop CodeLens + status. Ollama/OpenAI/HTTP.",
+  "version": "0.0.2",
+  "publisher": "local-build",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished",
+    "onCommand:promptCoder.processAICommentAtLine",
+    "onCommand:promptCoder.processCurrentAIComment",
+    "onCommand:promptCoder.processAIComments",
+    "onCommand:promptCoder.stop",
+    "onCommand:promptCoder.generateHere",
+    "onCommand:promptCoder.generateReplaceFile",
+    "onCommand:promptCoder.generateNewFile",
+    "onCommand:promptCoder.refreshCodeLens",
+    "onCommand:promptCoder.debugShowDirectiveMatches"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "promptCoder.processAICommentAtLine",
+        "title": "Prompt Coder: Process AI Comment At Line"
+      },
+      {
+        "command": "promptCoder.processCurrentAIComment",
+        "title": "Prompt Coder: Process Current AI Comment Only"
+      },
+      {
+        "command": "promptCoder.processAIComments",
+        "title": "Prompt Coder: Process AI Comments (Generate/Replace)"
+      },
+      {
+        "command": "promptCoder.stop",
+        "title": "Prompt Coder: Stop Current Generation"
+      },
+      {
+        "command": "promptCoder.generateHere",
+        "title": "Prompt Coder: Generate Here (Insert/Replace Selection)"
+      },
+      {
+        "command": "promptCoder.generateReplaceFile",
+        "title": "Prompt Coder: Generate & Replace Whole File"
+      },
+      {
+        "command": "promptCoder.generateNewFile",
+        "title": "Prompt Coder: Generate Into New File"
+      },
+      {
+        "command": "promptCoder.refreshCodeLens",
+        "title": "Prompt Coder: Refresh CodeLens"
+      },
+      {
+        "command": "promptCoder.debugShowDirectiveMatches",
+        "title": "Prompt Coder: Debug \u2013 Show Directive Matches"
+      }
+    ],
+    "configuration": {
+      "title": "Prompt Coder",
+      "properties": {
+        "promptCoder.provider": {
+          "type": "string",
+          "enum": [
+            "ollama",
+            "openai",
+            "http"
+          ],
+          "default": "ollama",
+          "description": "Backend provider"
+        },
+        "promptCoder.model": {
+          "type": "string",
+          "default": "qwen2.5-coder:7b",
+          "description": "Model name/tag"
+        },
+        "promptCoder.apiKey": {
+          "type": "string",
+          "default": "",
+          "description": "API key (OpenAI/HTTP if needed)"
+        },
+        "promptCoder.endpoint": {
+          "type": "string",
+          "default": "http://localhost:11434",
+          "description": "Endpoint for Ollama/HTTP"
+        },
+        "promptCoder.httpPath": {
+          "type": "string",
+          "default": "/api/generate",
+          "description": "Path for generic HTTP provider"
+        },
+        "promptCoder.maxTokens": {
+          "type": "number",
+          "default": 2048,
+          "description": "Max tokens (provider-specific)"
+        },
+        "promptCoder.temperature": {
+          "type": "number",
+          "default": 0.2,
+          "description": "Sampling temperature"
+        },
+        "promptCoder.systemPrompt": {
+          "type": "string",
+          "default": "You are a code generator. Return only code; no Markdown fences/backticks.",
+          "description": "System prompt"
+        },
+        "promptCoder.wrapSelectionWithCodeFence": {
+          "type": "boolean",
+          "default": false,
+          "description": "Wrap result with ``` for Generate Here (comment processors NEVER wrap)"
+        },
+        "promptCoder.runOnSave": {
+          "type": "boolean",
+          "default": false,
+          "description": "Process @ai directives on save"
+        }
+      }
+    }
+  },
+  "license": "MIT"
+}
