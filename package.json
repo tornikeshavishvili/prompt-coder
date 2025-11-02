@@ -2,7 +2,7 @@
   "name": "prompt-coder-final",
   "displayName": "Prompt Coder",
   "description": "Generate/replace raw code from @ai directives inside comments. Keeps markers. Strips fences/backticks. Run/Stop CodeLens + status. Ollama/OpenAI/HTTP.",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "publisher": "shavishvilitornike",
   "engines": {
     "vscode": "^1.85.0"
