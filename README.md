@@ -37,7 +37,7 @@ React button component with rounded corners and onClick logging "clicked"
 ### 3) Replace block
 
 ```
-@ai replace begin: write a useState hook for "murtazi"
+@ai replace begin: write a useState hook for "X"
 const [x, setX] = useState('');
 @ai replace end
 ```
@@ -140,7 +140,7 @@ const placeholder = () => {};
 ### React / JSX
 
 ```jsx
-{/* @ai generate: useState hook for "murtazi" default '' */}
+{/* @ai generate: useState hook for "X" default '' */}
 ```
 
 ```jsx
